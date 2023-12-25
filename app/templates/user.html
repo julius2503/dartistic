@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="source/dartboard.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="{{ url_for('static',filename='source/dartboard.js') }}"></script>
     <title>Bootstrap demo</title>
  </head>
   <body>
-    <section>
+    <h1>{{name}}´s Dartboard</h1>
+    <section id="dartboard-section">
         <button onclick="writeValue('20')">20</button>     <button onclick="writeValue('19')">19</button>     <button onclick="writeValue('18')">18</button>     <button onclick="writeValue('17')">17</button>     <button onclick="writeValue('16')">16</button>
         <br>
         <button onclick="writeValue('15')">15</button>     <button onclick="writeValue('14')">14</button>     <button onclick="writeValue('13')">13</button>     <button onclick="writeValue('12')">12</button>     <button onclick="writeValue('11')">11</button>
@@ -19,9 +20,14 @@
         <br>
         <button onclick="writeValue('0')">0</button>      <button onclick="writeValue('25')">25</button>     <button onclick="writeValue('D')" class="special-throw">D</button>        <button onclick="writeValue('T')" class="special-throw">T</button>
         <br>
-        <input id="first-dart" type="text" readonly>             <input id="second-dart" type="text" readonly>            <input id="third-dart" type="text" readonly>
-        <br>
-        <button onclick="deleteThrows()" class="board-action-btn">Delete</button><button onclick="enter()" class="board-action-btn">Enter</button>
+        <form action="" method="POST">
+            <input id="first-dart" name="first-dart" type="text" readonly>             
+            <input id="second-dart" name="second-dart" type="text" readonly>            
+            <input id="third-dart" name="third-dart" type="text" readonly>
+            <br>
+            <button onclick="deleteThrows()" class="board-action-btn">Delete</button>
+            <button type="submit" class="board-action-btn">Enter</button>
+        </form>
     </section>
   </body>
 </html>
