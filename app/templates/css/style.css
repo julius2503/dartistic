@@ -1,0 +1,30 @@
+section{
+    background-color: aqua;
+    margin: 50px auto 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+section button{
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
+section input{
+    margin: 5px;
+    width: 121px;
+    height: 70px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.special-throw{
+    width: 113px;
+}
+
+.board-action-btn{
+    width: 200px;
+}
