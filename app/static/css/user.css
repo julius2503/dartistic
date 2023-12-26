@@ -1,5 +1,6 @@
 #content section{
     float: left;
+    touch-action: manipulation;
 }
 
 h1{
@@ -24,14 +25,6 @@ h2{
     background-color: aqua;
 }
 
-#dartboard-section button{
-    width: 70px;
-    height: 70px;
-    margin: 5px;
-    font-size: 20px;
-    text-align: center;
-}
-
 
 #dartboard-section button{
     width: 70px;
@@ -42,6 +35,7 @@ h2{
 }
 
 #dartboard-section input{
+    appearance: none;
     margin: 5px;
     width: 121px;
     height: 70px;
@@ -101,4 +95,15 @@ h2{
     color:darkslategrey;
 }
 
+input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+}
 

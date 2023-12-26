@@ -62,8 +62,10 @@ def user(name):
             print("Submitted")
         print(" ")
     darts = Throw.query.order_by(Throw.time)
-    avg = helper.getAvg(darts)
-    return render_template("user.html", name=name, darts = darts, avg=avg)
+    dartsFromUser = Throw.query.filter(Throw.user == name)
+    avg = helper.getAvg(dartsFromUser)
+    overallScore = helper.getScore(dartsFromUser)
+    return render_template("user.html", name=name, darts = darts, avg=avg, score=overallScore)
 
 
 

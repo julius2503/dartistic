@@ -27,3 +27,35 @@ def getAvg(darts):
     if count > 0:
         return int(sum/count)
     return 0
+
+def getScore(darts):
+    # 20 - T20 - 100+ - 100 - 140 - 180
+    score = 6*[0]
+    for dart in darts:
+        if dart.dartOne == "20":
+            score[0] += 1
+        if dart.dartTwo == "20":
+            score[0] += 1
+        if dart.dartThree == "20":
+            score[0] += 1
+
+        if dart.dartOne == "T20":
+            score[1] += 1
+        if dart.dartTwo == "T20":
+            score[1] += 1
+        if dart.dartThree == "T20":
+            score[1] += 1
+
+        if dart.value >= 100:
+            score[2] += 1
+        
+        if dart.value == 100:
+            score[3] += 1
+        
+        if dart.value == 140:
+            score[4] += 1
+        
+        if dart.value == 180:
+            score[5] += 1
+    return score    
+
