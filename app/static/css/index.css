@@ -1,0 +1,52 @@
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:cadetblue;
+    text-transform: uppercase;
+    margin: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#users{
+    width: 80%;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#users div{
+   background-color: aqua;
+   height: 40px;
+   margin-top: 10px;
+   border-radius: 5px;
+   padding: 5px;
+}
+
+#addUser{
+    width: 80%;
+    margin: 0 auto 0 auto;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#addUser input{
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+#addUser button{
+    margin-right: 0;
+    padding: 0;
+    width: 7%;
+    height: 100%;
+    font-size: 30px;
+}

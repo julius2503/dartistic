@@ -4,30 +4,72 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+    <link rel="stylesheet" href="../static/css/user.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <script src="{{ url_for('static',filename='source/dartboard.js') }}"></script>
+    <script src="../static/source/dartboard.js"></script>
     <title>Bootstrap demo</title>
  </head>
   <body>
-    <h1>{{name}}´s Dartboard</h1>
-    <section id="dartboard-section">
-        <button onclick="writeValue('20')">20</button>     <button onclick="writeValue('19')">19</button>     <button onclick="writeValue('18')">18</button>     <button onclick="writeValue('17')">17</button>     <button onclick="writeValue('16')">16</button>
-        <br>
-        <button onclick="writeValue('15')">15</button>     <button onclick="writeValue('14')">14</button>     <button onclick="writeValue('13')">13</button>     <button onclick="writeValue('12')">12</button>     <button onclick="writeValue('11')">11</button>
-        <br>
-        <button onclick="writeValue('10')">10</button>     <button onclick="writeValue('9')">9</button>      <button onclick="writeValue('8')">8</button>      <button onclick="writeValue('7')">7</button>      <button onclick="writeValue('6')">6</button>
-        <br>
-        <button onclick="writeValue('5')">5</button>      <button onclick="writeValue('4')">4</button>      <button onclick="writeValue('3')">3</button>      <button onclick="writeValue('2')">2</button>      <button onclick="writeValue('1')">1</button>
-        <br>
-        <button onclick="writeValue('0')">0</button>      <button onclick="writeValue('25')">25</button>     <button onclick="writeValue('D')" class="special-throw">D</button>        <button onclick="writeValue('T')" class="special-throw">T</button>
-        <br>
-        <form action="" method="POST">
-            <input id="first-dart" name="first-dart" type="text" readonly>             
-            <input id="second-dart" name="second-dart" type="text" readonly>            
-            <input id="third-dart" name="third-dart" type="text" readonly>
-            <br>
-            <button onclick="deleteThrows()" class="board-action-btn">Delete</button>
-            <button type="submit" class="board-action-btn">Enter</button>
-        </form>
-    </section>
+    <h1>{{name}} Dartboard</h1>
+
+    <section id="content">
+      <a href="{{name}}/statistics">
+        <section id="statistics">
+          <h2>Statistics</h2>
+          <p>Avg: {{avg}}</p>
+          <p>20:</p>
+          <p>T20:</p>
+          <p>100+:</p>
+          <p>100:</p>
+          <p>140:</p>
+          <p>180: </p>
+          
+          
+        </section>
+      </a>
+
+      <section id="dartboard-section">
+        <section id="board">
+          <button onclick="writeValue('20')">20</button>     <button onclick="writeValue('19')">19</button>     <button onclick="writeValue('18')">18</button>     <button onclick="writeValue('17')">17</button>     <button onclick="writeValue('16')">16</button>
+          <br>
+          <button onclick="writeValue('15')">15</button>     <button onclick="writeValue('14')">14</button>     <button onclick="writeValue('13')">13</button>     <button onclick="writeValue('12')">12</button>     <button onclick="writeValue('11')">11</button>
+          <br>
+          <button onclick="writeValue('10')">10</button>     <button onclick="writeValue('9')">9</button>      <button onclick="writeValue('8')">8</button>      <button onclick="writeValue('7')">7</button>      <button onclick="writeValue('6')">6</button>
+          <br>
+          <button onclick="writeValue('5')">5</button>      <button onclick="writeValue('4')">4</button>      <button onclick="writeValue('3')">3</button>      <button onclick="writeValue('2')">2</button>      <button onclick="writeValue('1')">1</button>
+          <br>
+          <button onclick="writeValue('0')">0</button>      <button onclick="writeValue('25')">25</button>     <button onclick="writeValue('D')" class="special-throw">D</button>        <button onclick="writeValue('T')" class="special-throw">T</button>
+          <br>
+          <form action="" method="POST">
+              <input id="first-dart" name="first-dart" type="text" readonly>             
+              <input id="second-dart" name="second-dart" type="text" readonly>            
+              <input id="third-dart" name="third-dart" type="text" readonly>
+              <br>
+              <button onclick="deleteThrows()" class="board-action-btn">Delete</button>
+              <button type="submit" class="board-action-btn">Enter</button>
+          </form>
+        </section>
+      </section>
+
+      <a href="{{name}}/history">
+          <section id="history">
+            <h2>History</h2>
+            
+            <table>
+              {% for dart in darts|reverse%}
+              {% if dart.user == name %}
+              <tr>
+                <td> {{dart.dartOne}} </td>
+                <td> {{dart.dartTwo}} </td>
+                <td> {{dart.dartThree}} </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </table>
+          </section>
+        </a>
+  </section>
   </body>
 </html>

@@ -10,6 +10,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(200))
+    created_at = db.Column(db.DateTime(), default=datetime.utcnow)
+
 class Throw(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user = db.Column(db.String(200))
@@ -22,9 +27,19 @@ class Throw(db.Model):
 app.app_context().push()
 db.create_all()
 
-@app.route("/")
-def hello_world():
-    return render_template("index.html")
+@app.route("/", methods=['GET', 'POST'])
+def addUser():
+    if request.method == 'POST':
+        username = request.form['username']
+        if username != "" or username != " " or username != "db":
+            new_user = User(
+                name = username
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            print("Added new User: " + username)
+    users = User.query.order_by(User.created_at).all()
+    return render_template("index.html", users=users)
 
 @app.route("/<name>", methods=['GET', 'POST'])
 def user(name):
@@ -40,13 +55,15 @@ def user(name):
                 dartOne = valueOne,
                 dartTwo = valueTwo,
                 dartThree = valueThree,
-                value = 0
+                value = helper.getValue(valueOne) + helper.getValue(valueTwo) + helper.getValue(valueThree)
             )
             db.session.add(new_throw)
             db.session.commit()
             print("Submitted")
         print(" ")
-    return render_template("user.html", name=name)
+    darts = Throw.query.order_by(Throw.time)
+    avg = helper.getAvg(darts)
+    return render_template("user.html", name=name, darts = darts, avg=avg)
 
 
 

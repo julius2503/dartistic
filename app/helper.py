@@ -9,3 +9,21 @@ def check(v1, v2, v3):
         print("Wrong Input")
         return False
     return True
+
+def getValue(value):
+    if value[0] == "T":
+        return 3 * int(value[1:])
+    elif value[0] == "D":
+        return 2 * int(value[1:])
+    else:
+        return int(value)
+    
+def getAvg(darts):
+    count = 0
+    sum = 0
+    for dart in darts:
+        count+=1
+        sum+=dart.value
+    if count > 0:
+        return int(sum/count)
+    return 0
