@@ -26,6 +26,7 @@ class Throw(db.Model):
 
 app.app_context().push()
 db.create_all()
+#
 
 @app.route("/", methods=['GET', 'POST'])
 def addUser():

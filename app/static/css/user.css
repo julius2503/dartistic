@@ -1,7 +1,47 @@
-#content section{
-    float: left;
-    touch-action: manipulation;
+body{
+    width: 100%;
+    height: 100%;
+    max-height: 80%;
+    padding: 0;
+    margin: 0;
 }
+
+#content{
+    touch-action: manipulation;
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    max-height: 600px;
+    width: 100%;
+}
+
+#statistics{
+    display: inline-block;
+    background-color: aquamarine;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+#dartboard-section{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    border: 1px solid black;
+    text-align: center;
+    background-color: aqua;
+    max-width: 60%;
+}
+
+#history{
+    display: inline-block;
+    background-color: aquamarine;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+
 
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -17,55 +57,61 @@ h2{
     margin: 10px;
 }
 
-#dartboard-section{
-    border: 1px solid black;
-    margin-left: 50px;
-    width: 40%;
-    text-align: center;
-    background-color: aqua;
+
+#board{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
+.board-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
-#dartboard-section button{
+.board-row button{
     width: 70px;
     height: 70px;
-    margin: 5px;
-    font-size: 20px;
-    text-align: center;
-}
-
-#dartboard-section input{
-    appearance: none;
-    margin: 5px;
-    width: 121px;
-    height: 70px;
-    text-align: center;
-    font-size: 50px;
 }
 
 #dartboard-section .special-throw{
-    width: 113px;
+    width: 130px;
 }
 
 #dartboard-section .board-action-btn{
     width: 200px;
 }
 
-#dartboard-section #board{
-    width: 100%;
+
+#dart-form{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    height: 200px;
 }
 
-#history{
-    background-color: aquamarine;
-    width: 20%;
+#display-value{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+#display-value input{
+    appearance: none;
+    width: 25%;
     text-align: center;
-    margin-left: 5%;
-    height: 570px;
-    overflow: hidden;
+    font-size: 50px;
 }
 
-#history table{
-    width: 100%;
+#submit-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+#submit-buttons button{
+    height: 50px;
 }
 
 #history table tr{
@@ -79,31 +125,9 @@ h2{
     color:darkslategrey;
 }
 
-#statistics{
-    background-color: aquamarine;
-    width: 20%;
-    text-align: center;
-    margin-left: 5%;
-    height: 570px;
-    overflow: hidden;
-}
-
 #statistics p{
     font-size: 30px;
     margin: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:darkslategrey;
 }
-
-input[type="text"] {
-    -webkit-appearance: none;
-    -moz-appearance:    none;
-    appearance:         none;
-}
-
-input {
-    -webkit-appearance: none;
-    -moz-appearance:    none;
-    appearance:         none;
-}
-
