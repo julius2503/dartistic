@@ -15,8 +15,6 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # configure the container to run in an executed manner
-EXPOSE 8080
-
-RUN cd app
-
-CMD ["gunicorn","--config", "gunicorn_config.py", "app:app"]
+EXPOSE 8082
+RUN chmod +x app/gunicorn_starter.sh
+ENTRYPOINT [ "./app/gunicorn_starter.sh" ]
