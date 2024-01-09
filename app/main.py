@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import app.helper as helper
+import requests
 import os.path
+
+try:
+    import app.helper as helper
+except ModuleNotFoundError:
+    import helper
 
 app = Flask(__name__)
 
@@ -42,6 +47,13 @@ def addUser():
             db.session.add(new_user)
             db.session.commit()
             print("Added new User: " + username)
+            requests.post("https://notify.julius-braun.com/dartistic", 
+                          data=f"Added new User \"{username}\" 😀".encode(encoding='utf-8'), 
+                          headers={
+                                "Authorization": "Basic anVsaXVzOnZpYnFVYi12eWdnYTktdGVoeHlk",
+                                "Title": "Dartistic",
+                                "Tags": "warning,dart"
+                              })
     users = User.query.order_by(User.created_at).all()
     return render_template("index.html", users=users)
 
