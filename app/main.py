@@ -2,12 +2,12 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import helper
-import os
+import os.path
 
 app = Flask(__name__)
 
 # DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -25,9 +25,11 @@ class Throw(db.Model):
     value = db.Column(db.Integer)
     time = db.Column(db.DateTime(), default=datetime.utcnow)
 
-app.app_context().push()
-db.create_all()
-#
+if not os.path.isfile("instance/database.db"):
+    app.app_context().push()
+    db.create_all()
+    print("New database created")
+
 
 @app.route("/", methods=['GET', 'POST'])
 def addUser():

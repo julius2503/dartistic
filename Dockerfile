@@ -12,9 +12,9 @@ RUN pip3 install --upgrade pip
 RUN pip install -r requirements.txt
 
 # copy every content from the local file to the image
-COPY . /app
+COPY . /dartistic
 
 # configure the container to run in an executed manner
 EXPOSE 8082
-RUN chmod +x app/gunicorn_starter.sh
-ENTRYPOINT [ "./app/gunicorn_starter.sh" ]
+RUN chmod +x dartistic/gunicorn_starter.sh
+ENTRYPOINT [ "./dartistic/gunicorn_starter.sh" ]
